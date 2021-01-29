@@ -30,7 +30,7 @@ const productSelect: IProductSelect = (setProduct: any) => {
 const GibsSelect: GibsNasa.GibsSelectorComponent = ({
   selectGibsProduct,
 }: { selectGibsProduct: GibsNasa.GibsSelectorCallback }) => {
-  const [day, setDay] = useState<number>(10)
+  const [day, setDay] = useState<number>(1)
   const [month, setMonth] = useState<number>(7)
   const [year, setYear] = useState<number>(2005)
   const [product, setProduct] = useState<any>('MODIS_Terra_CorrectedReflectance_TrueColor')
@@ -42,10 +42,11 @@ const GibsSelect: GibsNasa.GibsSelectorComponent = ({
       tileMatrixSets: ['EPSG4326_250m'],
       format: 'jpg',
     }
-    const userSelectedDate = new Date(year, month, day)
+    const userSelectedDate = new Date(year, (month - 1), day)
+    console.log(userSelectedDate)
     const dateFormatted = `${userSelectedDate
       .getFullYear()}-${String(userSelectedDate
-      .getMonth()).padStart(2, '0')}-${String(userSelectedDate
+      .getMonth() + 1).padStart(2, '0')}-${String(userSelectedDate
       .getDate()).padStart(2, '0')}`
     selectGibsProduct(gibsProduct, dateFormatted)
   }, [year, month, day, product])
