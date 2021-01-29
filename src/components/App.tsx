@@ -18,9 +18,11 @@ function App() {
   const intiGibsProduct: GibsNasa.Product = gibsProducts.multibandImagery[0]
   const [gibsProduct, setGibsProduct] = useState<GibsNasa.Product>(intiGibsProduct)
   const [gibsDate, setGibsDate] = useState<string>(intiGibsProduct.dateRange[0])
-  const [sourceOptions, setSourceOptions] = useState(getOLSourceOptions(gibsDate))
+  const [
+    sourceOptions,
+    setSourceOptions] = useState(getOLSourceOptions(gibsDate, intiGibsProduct.imageLayer))
   useEffect(() => {
-    setSourceOptions(getOLSourceOptions(gibsDate))
+    setSourceOptions(getOLSourceOptions(gibsDate, gibsProduct.imageLayer))
   }, [gibsProduct, gibsDate])
 
   return (

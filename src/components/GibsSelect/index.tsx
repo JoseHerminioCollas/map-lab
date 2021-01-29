@@ -33,22 +33,22 @@ const GibsSelect: GibsNasa.GibsSelectorComponent = ({
   const [day, setDay] = useState<number>(10)
   const [month, setMonth] = useState<number>(7)
   const [year, setYear] = useState<number>(2005)
-  const [product, setProduct] = useState<any>()
-  const gibsProduct: GibsNasa.Product = {
-    description: 'Corrected Reflectance (Bands 3-6-7) ',
-    imageLayer: 'MODIS_Terra_CorrectedReflectance_Bands367',
-    dateRange: ['2003-01-01', 'present'],
-    tileMatrixSets: ['EPSG4326_250m'],
-    format: 'jpg',
-  }
+  const [product, setProduct] = useState<any>('MODIS_Terra_CorrectedReflectance_TrueColor')
   useEffect(() => {
+    const gibsProduct: GibsNasa.Product = {
+      description: 'Corrected Reflectance (Bands 3-6-7) ',
+      imageLayer: product,
+      dateRange: ['2003-01-01', 'present'],
+      tileMatrixSets: ['EPSG4326_250m'],
+      format: 'jpg',
+    }
     const userSelectedDate = new Date(year, month, day)
     const dateFormatted = `${userSelectedDate
       .getFullYear()}-${String(userSelectedDate
       .getMonth()).padStart(2, '0')}-${String(userSelectedDate
       .getDate()).padStart(2, '0')}`
     selectGibsProduct(gibsProduct, dateFormatted)
-  }, [year, month, day])
+  }, [year, month, day, product])
   useEffect(() => {
     console.log('product', product)
   }, [product])
