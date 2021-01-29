@@ -1,5 +1,31 @@
 import React, { useEffect, useState } from 'react'
-import { Slider } from '@fluentui/react'
+import { Slider, CommandBar, ICommandBarItemProps } from '@fluentui/react'
+import gibsProducts from '../Gibs'
+
+interface IProductSelect {
+  (setProduct: React.Dispatch<React.SetStateAction<string>>): ICommandBarItemProps
+}
+
+const productSelect: IProductSelect = (setProduct: any) => {
+  const items: ICommandBarItemProps[] = []
+  gibsProducts.multibandImagery.forEach(product => {
+    const item: any = {
+      key: product.imageLayer,
+      text: product.description,
+      onClick: () => setProduct(product.imageLayer),
+    }
+    items.push(item)
+  })
+
+  return {
+    key: 'gibs-products',
+    text: 'Gibs Products',
+    iconProps: { iconName: 'ProductList' },
+    subMenuProps: {
+      items,
+    },
+  }
+}
 
 const GibsSelect: GibsNasa.GibsSelectorComponent = ({
   selectGibsProduct,
@@ -7,6 +33,7 @@ const GibsSelect: GibsNasa.GibsSelectorComponent = ({
   const [day, setDay] = useState<number>(10)
   const [month, setMonth] = useState<number>(7)
   const [year, setYear] = useState<number>(2005)
+  const [product, setProduct] = useState<any>()
   const gibsProduct: GibsNasa.Product = {
     description: 'Corrected Reflectance (Bands 3-6-7) ',
     imageLayer: 'MODIS_Terra_CorrectedReflectance_Bands367',
@@ -22,10 +49,16 @@ const GibsSelect: GibsNasa.GibsSelectorComponent = ({
       .getDate()).padStart(2, '0')}`
     selectGibsProduct(gibsProduct, dateFormatted)
   }, [year, month, day])
+  useEffect(() => {
+    console.log('product', product)
+  }, [product])
 
   return (
     <>
       <>
+        <CommandBar
+          items={[productSelect(setProduct)]}
+        />
         <Slider
           label="Day"
           min={1}
