@@ -38,5 +38,15 @@ const gibsProducts: GibsNasa.Products = {
   },
   ],
 }
-
+const getOLSourceOptions = (date: string) => {
+  const sO = {
+    url: `
+https://gibs-{a-c}.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Terra_CorrectedReflectance_TrueColor/default/
+${date}/GoogleMapsCompatible_Level9/{z}/{y}/{x}.jpg`,
+    attributions:
+      ['Global Imagery Browse Services <a href="https://wiki.earthdata.nasa.gov/pages/viewpage.action?pageId=2228230" >(GIBS)</a>'],
+  }
+  return sO
+}
+export { getOLSourceOptions }
 export default gibsProducts

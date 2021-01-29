@@ -18,7 +18,6 @@ const GibsMap: GibsNasa.GibsMap = ({
     appService.addCenterStatus(center, id)
   }
   const [map, setMap]: any = useState()
-
   useEffect(() => {
     const OLMap: any = new Map({
       target: mapElement.current,
