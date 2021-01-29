@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Slider } from '@fluentui/react'
-import gibsProducts from '../Gibs'
 
 const GibsSelect: GibsNasa.GibsSelectorComponent = ({
   selectGibsProduct,
@@ -23,7 +22,6 @@ const GibsSelect: GibsNasa.GibsSelectorComponent = ({
       .getDate()).padStart(2, '0')}`
     selectGibsProduct(gibsProduct, dateFormatted)
   }, [year, month, day])
-  console.log(gibsProducts, selectGibsProduct)
 
   return (
     <>

@@ -6,7 +6,6 @@ import style from '../style/main-style'
 import GibsSelect from './GibsSelect'
 import GibsMap from './GibsMap'
 import AppService, { AppServiceInstanceI } from '../app-service'
-// import gibsProducts from './Gibs'
 
 initializeIcons()
 jss.setup(preset())
@@ -41,6 +40,7 @@ function App() {
           // addCenterEventListener
           // addGibsProductEventListener
           // gibsProduct ::: state
+          gibsDate={gibsDate}
           appService={applicationService}
         />
       </section>

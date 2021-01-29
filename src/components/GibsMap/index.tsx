@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Map from 'ol/Map'
 import View from 'ol/View'
 import TileLayer from 'ol/layer/Tile'
@@ -8,13 +8,15 @@ import XYZ from 'ol/source/XYZ'
 import * as olProj from 'ol/proj'
 import { AppServiceInstanceI } from '../../app-service'
 
-const GibsMap: GibsNasa.GibsMap = ({ id, appService }: {
-  id: number, appService: AppServiceInstanceI
+const GibsMap: GibsNasa.GibsMap = ({ id, appService, gibsDate }: {
+  id: number, appService: AppServiceInstanceI, gibsDate: string
 }) => {
   const mapElement: any = useRef()
   const addCenter = (center: any) => {
     appService.addCenterStatus(center, id)
   }
+  const [map, setMap]: any = useState()
+
   useEffect(() => {
     const initalFeaturesLayer = new VectorLayer({
       source: new VectorSource(),
@@ -26,7 +28,7 @@ const GibsMap: GibsNasa.GibsMap = ({ id, appService }: {
       attributions:
         ['Global Imagery Browse Services <a href="https://wiki.earthdata.nasa.gov/pages/viewpage.action?pageId=2228230" >(GIBS)</a>'],
     })
-    const map: any = new Map({
+    const OLMap: any = new Map({
       target: mapElement.current,
       layers: [
         new TileLayer({
@@ -46,10 +48,27 @@ const GibsMap: GibsNasa.GibsMap = ({ id, appService }: {
     appService.addCenterEventListener(center => {
       if (map) {
         const lLConverted = olProj.fromLonLat([center[1], center[0]])
-        map.target.getView().setCenter(lLConverted)
+        OLMap.target.getView().setCenter(lLConverted)
       }
     }, id)
+    setMap(OLMap)
   }, [])
+  useEffect(() => {
+    // update map with new date
+    console.log(gibsDate, map)
+    const source = new XYZ({
+      url: `https://gibs-{a-c}.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Terra_CorrectedReflectance_TrueColor/default/
+${gibsDate}/GoogleMapsCompatible_Level9/{z}/{y}/{x}.jpg`,
+      attributions:
+        ['Global Imagery Browse Services <a href="https://wiki.earthdata.nasa.gov/pages/viewpage.action?pageId=2228230" >(GIBS)</a>'],
+    })
+
+    if (map) {
+      const ls = map.target.getLayers().getArray()
+      ls[0].setSource(source)
+      console.log(ls, source)
+    }
+  }, [gibsDate])
 
   return (
     <div ref={mapElement} className="openlayer" />
