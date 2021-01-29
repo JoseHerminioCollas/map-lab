@@ -8,11 +8,7 @@ import XYZ from 'ol/source/XYZ'
 import * as olProj from 'ol/proj'
 import { AppServiceInstanceI } from '../../app-service'
 
-interface IMapWrapper {
-  (props: any): any
-}
-
-const GibsMap: IMapWrapper = ({ id, appService }: {
+const GibsMap: GibsNasa.GibsMap = ({ id, appService }: {
   id: number, appService: AppServiceInstanceI
 }) => {
   const mapElement: any = useRef()
