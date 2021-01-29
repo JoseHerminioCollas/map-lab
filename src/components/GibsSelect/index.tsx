@@ -4,11 +4,10 @@ import gibsProducts from '../Gibs'
 
 const GibsSelect: GibsNasa.GibsSelectorComponent = ({
   selectGibsProduct,
-}: {selectGibsProduct: GibsNasa.GibsSelectorCallback}) => {
+}: { selectGibsProduct: GibsNasa.GibsSelectorCallback }) => {
   const [day, setDay] = useState<number>(10)
   const [month, setMonth] = useState<number>(7)
   const [year, setYear] = useState<number>(2005)
-  const [date, setDate] = useState('2003-08-10')
   const gibsProduct: GibsNasa.Product = {
     description: 'Corrected Reflectance (Bands 3-6-7) ',
     imageLayer: 'MODIS_Terra_CorrectedReflectance_Bands367',
@@ -18,20 +17,16 @@ const GibsSelect: GibsNasa.GibsSelectorComponent = ({
   }
   useEffect(() => {
     const userSelectedDate = new Date(year, month, day)
-    setDate(
-      `${userSelectedDate
-        .getFullYear()}-${String(userSelectedDate
-        .getMonth()).padStart(2, '0')}-${String(userSelectedDate
-        .getDate()).padStart(2, '0')}`,
-    )
-    gibsProduct.description = 'xxxx'
-    selectGibsProduct(gibsProduct)
+    const dateFormatted = `${userSelectedDate
+      .getFullYear()}-${String(userSelectedDate
+      .getMonth()).padStart(2, '0')}-${String(userSelectedDate
+      .getDate()).padStart(2, '0')}`
+    selectGibsProduct(gibsProduct, dateFormatted)
   }, [year, month, day])
   console.log(gibsProducts, selectGibsProduct)
 
   return (
     <>
-      {date}
       <>
         <Slider
           label="Day"

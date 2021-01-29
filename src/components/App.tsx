@@ -23,13 +23,18 @@ function App() {
     format: 'jpg',
   }
   const [gibsProduct, setGibsProduct] = useState<GibsNasa.Product>(intiGibsProduct)
+  const [gibsDate, setGibsDate] = useState<string>('1003-09-09')
   return (
     <>
       <section className={sheet.classes.mainContainer}>
         <GibsSelect
-          selectGibsProduct={(product: GibsNasa.Product) => setGibsProduct(product)}
+          selectGibsProduct={(product, date) => {
+            setGibsDate(date)
+            setGibsProduct(product)
+          }}
         />
-        {JSON.stringify(gibsProduct)}
+        {gibsProduct.description}
+        {gibsDate}
         <GibsMap
           id={10}
           // addCenterStatus

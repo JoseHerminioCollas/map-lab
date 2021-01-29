@@ -15,7 +15,7 @@ declare namespace GibsNasa {
     multibandImagery: Product[]
   }
   export interface GibsSelectorCallback {
-    (product: GibsNasa.Product): void
+    (product: GibsNasa.Product, date: string): void
   }
   export interface GibsSelectorComponent {
     ({ selectGibsProduct }: { selectGibsProduct: GibsSelectorCallback }): React.Element
