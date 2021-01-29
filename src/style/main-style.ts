@@ -30,10 +30,18 @@ const style: any = {
       height: '100%',
     },
     '& .openlayer': {
-      position: 'relative',
+      position: 'absolute',
       width: '100%',
-      height: '100%',
+      height: '85%',
 
+    },
+    '& .gibs-select': {
+      position: 'absolute',
+      bottom: 0,
+      // overflow: 'hidden',
+      background: 'red',
+      width: '100%',
+      height: '25%',
     },
     '& .leaflet-map': {
       width: '100%',

@@ -28,18 +28,16 @@ function App() {
   return (
     <>
       <section className={sheet.classes.mainContainer}>
+        <GibsMap
+          id={10}
+          sourceOptions={sourceOptions}
+          appService={applicationService}
+        />
         <GibsSelect
           selectGibsProduct={(product, date) => {
             setGibsDate(date)
             setGibsProduct(product)
           }}
-        />
-        {gibsProduct.description}
-        {gibsDate}
-        <GibsMap
-          id={10}
-          sourceOptions={sourceOptions}
-          appService={applicationService}
         />
       </section>
     </>

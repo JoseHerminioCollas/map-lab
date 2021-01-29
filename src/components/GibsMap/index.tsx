@@ -27,7 +27,7 @@ const GibsMap: GibsNasa.GibsMap = ({
         }),
       ],
       view: new View({
-        projection: 'EPSG:3857',
+        projection: 'EPSG:4326', // EPSG:3857 EPSG4326_250m
         center: [0, 0],
         zoom: 0,
       }),

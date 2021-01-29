@@ -55,37 +55,35 @@ const GibsSelect: GibsNasa.GibsSelectorComponent = ({
   }, [product])
 
   return (
-    <>
-      <>
-        <CommandBar
-          items={[productSelect(setProduct)]}
-        />
-        <Slider
-          label="Day"
-          min={1}
-          max={30}
-          value={day}
-          showValue
-          onChange={(dayValue: number) => setDay(dayValue)}
-        />
-        <Slider
-          label="Month"
-          min={1}
-          max={12}
-          value={month}
-          showValue
-          onChange={(monthValue: number) => setMonth(monthValue)}
-        />
-        <Slider
-          label="Year"
-          min={2003}
-          max={2020}
-          value={year}
-          showValue
-          onChange={(yearValue: number) => setYear(yearValue)}
-        />
-      </>
-    </>
+    <section className="gibs-select">
+      <CommandBar
+        items={[productSelect(setProduct)]}
+      />
+      <Slider
+        label="Day"
+        min={1}
+        max={30}
+        value={day}
+        showValue
+        onChange={(dayValue: number) => setDay(dayValue)}
+      />
+      <Slider
+        label="Month"
+        min={1}
+        max={12}
+        value={month}
+        showValue
+        onChange={(monthValue: number) => setMonth(monthValue)}
+      />
+      <Slider
+        label="Year"
+        min={2003}
+        max={2020}
+        value={year}
+        showValue
+        onChange={(yearValue: number) => setYear(yearValue)}
+      />
+    </section>
   )
 }
 export default GibsSelect
