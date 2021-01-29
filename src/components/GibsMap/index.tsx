@@ -46,9 +46,8 @@ const GibsMap: GibsNasa.GibsMap = ({
     setMap(OLMap)
   }, [])
   useEffect(() => {
-    console.log('sourceOptions', map)
-    const source = new XYZ(sourceOptions)
     if (map) {
+      const source = new XYZ(sourceOptions)
       const ls = map.target.getLayers().getArray()
       ls[0].setSource(source)
     }
