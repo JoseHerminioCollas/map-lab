@@ -32,16 +32,25 @@ const style: any = {
     '& .openlayer': {
       position: 'absolute',
       width: '100%',
-      height: '85%',
+      height: '90%',
 
     },
     '& .gibs-select': {
       position: 'absolute',
       bottom: 0,
-      // overflow: 'hidden',
-      background: 'red',
+      overflow: 'auto',
+      background: '#fff',
       width: '100%',
-      height: '25%',
+      height: '10%',
+      display: 'flex',
+      justifyContent: 'space-around',
+      alignContent: 'center',
+      flexWrap: 'wrap',
+      color: 'gray',
+    },
+    '& .ms-Slider': {
+      minWidth: '250px',
+      maxWidth: '600px',
     },
     '& .leaflet-map': {
       width: '100%',
