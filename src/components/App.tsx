@@ -41,22 +41,21 @@ function App() {
           appService={applicationService}
         />
         <div className="control-frame">
-          xxxx
-          <CommandBar
-            items={[infoCommandItem]}
-            ariaLabel="Use left and right arrow keys to navigate between commands"
-          />
           <InfoModal
             setIsModalOpen={setIsModalOpen}
             isModalOpen={isModalOpen}
           />
+          <GibsSelect
+            selectGibsProduct={(product, date) => {
+              setGibsDate(date)
+              setGibsProduct(product)
+            }}
+          />
+          <CommandBar
+            items={[infoCommandItem]}
+            ariaLabel="Use left and right arrow keys to navigate between commands"
+          />
         </div>
-        <GibsSelect
-          selectGibsProduct={(product, date) => {
-            setGibsDate(date)
-            setGibsProduct(product)
-          }}
-        />
       </section>
     </>
   )

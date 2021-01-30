@@ -36,12 +36,8 @@ const style: any = {
 
     },
     '& .gibs-select': {
-      position: 'absolute',
-      top: 0,
       overflow: 'auto',
       background: '#fff',
-      width: '100%',
-      height: '10%',
       display: 'flex',
       justifyContent: 'space-around',
       alignContent: 'center',
