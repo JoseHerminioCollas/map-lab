@@ -37,7 +37,7 @@ const style: any = {
     },
     '& .gibs-select': {
       position: 'absolute',
-      bottom: 0,
+      top: 0,
       overflow: 'auto',
       background: '#fff',
       width: '100%',
@@ -62,6 +62,19 @@ const style: any = {
     },
     '& .bing-map': {
       width: '100%',
+    },
+    '& .control-frame': {
+      position: 'absolute',
+      bottom: 0,
+      overflow: 'auto',
+      background: '#fff',
+      width: '100%',
+      height: '10%',
+      display: 'flex',
+      justifyContent: 'space-around',
+      alignContent: 'center',
+      flexWrap: 'wrap',
+      color: 'gray',
     },
   },
 }

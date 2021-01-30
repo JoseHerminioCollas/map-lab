@@ -52,7 +52,7 @@ const GibsSelect: GibsNasa.GibsSelectorComponent = ({
 
   return (
     <section className="gibs-select">
-      <h3>View Gibs</h3>
+      <h3>ViewGibs</h3>
       <CommandBar
         items={[productSelect(setProduct)]}
       />
