@@ -43,16 +43,12 @@ const GibsSelect: GibsNasa.GibsSelectorComponent = ({
       format: 'jpg',
     }
     const userSelectedDate = new Date(year, (month - 1), day)
-    console.log(userSelectedDate)
     const dateFormatted = `${userSelectedDate
       .getFullYear()}-${String(userSelectedDate
       .getMonth() + 1).padStart(2, '0')}-${String(userSelectedDate
       .getDate()).padStart(2, '0')}`
     selectGibsProduct(gibsProduct, dateFormatted)
   }, [year, month, day, product])
-  useEffect(() => {
-    console.log('product', product)
-  }, [product])
 
   return (
     <section className="gibs-select">
