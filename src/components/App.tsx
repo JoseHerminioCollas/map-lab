@@ -3,7 +3,6 @@ import { CommandBar, initializeIcons } from '@fluentui/react'
 import jss from 'jss'
 import preset from 'jss-preset-default'
 import style from '../style/main-style'
-import GibsSelect from './GibsSelect'
 import GibsMap from './GibsMap'
 import InfoModal from './InfoModal'
 import AppService, { AppServiceInstanceI } from '../app-service'
@@ -12,6 +11,7 @@ import {
   infoCommandItem,
   infoWithAction,
 } from '../command-items'
+import { CalendarButtonExample } from './DatePicker'
 
 initializeIcons()
 jss.setup(preset())
@@ -31,6 +31,7 @@ function App() {
   useEffect(() => {
     setSourceOptions(getOLSourceOptions(gibsDate, gibsProduct.imageLayer))
   }, [gibsProduct, gibsDate])
+  console.log(setGibsDate, setGibsProduct)
 
   return (
     <>
@@ -41,15 +42,10 @@ function App() {
           appService={applicationService}
         />
         <div className="control-frame">
+          <CalendarButtonExample />
           <InfoModal
             setIsModalOpen={setIsModalOpen}
             isModalOpen={isModalOpen}
-          />
-          <GibsSelect
-            selectGibsProduct={(product, date) => {
-              setGibsDate(date)
-              setGibsProduct(product)
-            }}
           />
           <CommandBar
             items={[infoCommandItem]}
