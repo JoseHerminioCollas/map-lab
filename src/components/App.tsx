@@ -31,7 +31,7 @@ function App() {
   useEffect(() => {
     setSourceOptions(getOLSourceOptions(gibsDate, gibsProduct.imageLayer))
   }, [gibsProduct, gibsDate])
-  console.log(setGibsDate, setGibsProduct)
+  console.log(setGibsProduct)
 
   return (
     <>
@@ -42,7 +42,11 @@ function App() {
           appService={applicationService}
         />
         <div className="control-frame">
-          <CalendarButtonExample />
+          <CalendarButtonExample
+            onDateSelect={(date: string) => {
+              setGibsDate(date)
+            }}
+          />
           <InfoModal
             setIsModalOpen={setIsModalOpen}
             isModalOpen={isModalOpen}

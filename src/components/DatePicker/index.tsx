@@ -36,6 +36,7 @@ const DayPickerStrings = {
 }
 
 export interface ICalendarButtonExampleProps {
+  onDateSelect: (date: string) => void;
   isDayPickerVisible?: boolean;
   isMonthPickerVisible?: boolean;
   highlightCurrentMonth?: boolean;
@@ -54,6 +55,7 @@ export const CalendarButtonExample: React.FunctionComponent<ICalendarButtonExamp
   const [selectedDate, setSelectedDate] = useState<Date>()
 
   const {
+    onDateSelect,
     showMonthPickerAsOverlay = false,
     isDayPickerVisible = true,
     isMonthPickerVisible = true,
@@ -62,16 +64,16 @@ export const CalendarButtonExample: React.FunctionComponent<ICalendarButtonExamp
     highlightCurrentMonth,
     highlightSelectedMonth,
   } = props
-  const onSelectDate = (date: Date): void => {
+  const onUserDateSelect = (date: Date): void => {
     setShowCalendar(false)
     setSelectedDate(date)
+    onDateSelect(date.toISOString().slice(0, 10))
   }
 
   return (
     <div>
       <div ref={calendarBtn => {
-        // @ts-ignore
-        calendarButtonElement = calendarBtn!
+        if (calendarBtn) calendarButtonElement = calendarBtn
       }}
       >
         <DefaultButton
@@ -92,8 +94,7 @@ export const CalendarButtonExample: React.FunctionComponent<ICalendarButtonExamp
         >
           <FocusTrapZone firstFocusableSelector="ms-DatePicker-day--today" isClickableOutsideFocusTrap>
             <Calendar
-              // eslint-disable-next-line react/jsx-no-bind
-              onSelectDate={onSelectDate}
+              onSelectDate={onUserDateSelect}
               onDismiss={() => setShowCalendar(false)}
               isMonthPickerVisible={isMonthPickerVisible}
               value={selectedDate!}
