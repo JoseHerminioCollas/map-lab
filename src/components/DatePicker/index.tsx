@@ -105,6 +105,8 @@ export const CalendarButtonExample: React.FunctionComponent<ICalendarButtonExamp
               highlightSelectedMonth={highlightSelectedMonth}
               showMonthPickerAsOverlay={showMonthPickerAsOverlay}
               showGoToToday={showGoToToday}
+              maxDate={new Date()}
+              minDate={new Date(2003, 0, 1)}
             />
           </FocusTrapZone>
         </Callout>
