@@ -32,7 +32,7 @@ function App() {
   useEffect(() => {
     setSourceOptions(getOLSourceOptions(gibsDate, gibsProduct.imageLayer))
   }, [gibsProduct, gibsDate])
-  console.log(setGibsProduct)
+  // console.log(setGibsProduct)
 
   return (
     <>
@@ -45,7 +45,9 @@ function App() {
         <div className="control-frame">
           <GibsProductSelect
             products={gibsProducts}
-            onProductSelect={product => console.log('product', product)}
+            onProductSelect={product => {
+              setGibsProduct(product)
+            }}
           />
           <CalendarButtonExample
             onDateSelect={(date: string) => {
