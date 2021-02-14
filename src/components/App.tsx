@@ -12,6 +12,7 @@ import {
   infoWithAction,
 } from '../command-items'
 import { CalendarButtonExample } from './DatePicker'
+import GibsProductSelect from './GibsProductSelect'
 
 initializeIcons()
 jss.setup(preset())
@@ -42,6 +43,10 @@ function App() {
           appService={applicationService}
         />
         <div className="control-frame">
+          <GibsProductSelect
+            products={gibsProducts}
+            onProductSelect={product => console.log('product', product)}
+          />
           <CalendarButtonExample
             onDateSelect={(date: string) => {
               setGibsDate(date)

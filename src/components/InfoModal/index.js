@@ -5,7 +5,6 @@ import {
   getTheme,
 } from '@fluentui/react'
 import React from 'react'
-import PropTypes from 'prop-types'
 
 const theme = getTheme()
 const contentStyles = mergeStyleSets({
@@ -80,9 +79,5 @@ const InfoModal = ({ setIsModalOpen, isModalOpen }) => (
     </p>
   </Modal>
 )
-/* eslint-disable react/forbid-prop-types */
-InfoModal.propTypes = {
-  setIsModalOpen: PropTypes.func.isRequired,
-  isModalOpen: PropTypes.bool.isRequired,
-}
+
 export default InfoModal

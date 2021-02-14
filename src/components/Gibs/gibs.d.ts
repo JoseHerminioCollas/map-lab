@@ -23,5 +23,15 @@ declare namespace GibsNasa {
   export interface GibsMap {
     (props): React.Element
   }
+  export interface OnProductSelect {
+    (product: GibsNasa.Product): void
+  }
+  export interface GibsProductSelect {
+    ({ products, onProductSelect }:
+      {
+        products: GibsNasa.Products,
+        onProductSelect: GibsNasa.OnProductSelect
+      }): React.Element
+  }
 }
 export as namespace GibsNasa
