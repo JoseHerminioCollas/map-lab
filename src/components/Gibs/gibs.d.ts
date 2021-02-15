@@ -33,5 +33,9 @@ declare namespace GibsNasa {
         onProductSelect: GibsNasa.OnProductSelect
       }): React.Element
   }
+  export interface GibsProductInfo {
+    ({product, date}: {product: GibsNasa.Product, date: string}): React.Element
+  }
+
 }
 export as namespace GibsNasa

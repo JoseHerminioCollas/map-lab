@@ -1,0 +1,21 @@
+.gibs-product-info {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 3px;
+}
+.gibs-product-info h5 {
+    margin: 0 3px;
+    padding: 0;
+}
+.gibs-product-info ul {
+    margin: 0 3px;
+    padding: 0;
+}
+.gibs-product-info li {
+    font-size: 0.8em;
+    list-style: none;
+}
+.gibs-product-info li span::after {
+    content: ': '
+}

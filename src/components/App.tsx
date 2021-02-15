@@ -13,6 +13,7 @@ import {
 } from '../command-items'
 import { CalendarButtonExample } from './DatePicker'
 import GibsProductSelect from './GibsProductSelect'
+import GibsProductInfo from './GibsProductInfo'
 
 initializeIcons()
 jss.setup(preset())
@@ -32,7 +33,6 @@ function App() {
   useEffect(() => {
     setSourceOptions(getOLSourceOptions(gibsDate, gibsProduct.imageLayer))
   }, [gibsProduct, gibsDate])
-  // console.log(setGibsProduct)
 
   return (
     <>
@@ -43,6 +43,11 @@ function App() {
           appService={applicationService}
         />
         <div className="control-frame">
+          <h3>GibsView</h3>
+          <GibsProductInfo
+            product={gibsProduct}
+            date={gibsDate}
+          />
           <GibsProductSelect
             products={gibsProducts}
             onProductSelect={product => {

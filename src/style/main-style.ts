@@ -68,9 +68,18 @@ const style: any = {
       height: '10%',
       display: 'flex',
       justifyContent: 'space-around',
-      alignContent: 'center',
       flexWrap: 'wrap',
       color: 'gray',
+    },
+    '& .control-frame h3': {
+      color: 'black',
+      padding: 0,
+      margin: '3px',
+    },
+    '& .control-frame button.ms-Button': {
+      color: 'gray',
+      padding: 0,
+      margin: '3px',
     },
   },
 }
