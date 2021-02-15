@@ -43,7 +43,7 @@ function App() {
           appService={applicationService}
         />
         <div className="control-frame">
-          <h3>GibsView</h3>
+          <h3>ViewGibs</h3>
           <GibsProductInfo
             product={gibsProduct}
             date={gibsDate}
