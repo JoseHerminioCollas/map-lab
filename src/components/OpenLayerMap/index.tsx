@@ -38,16 +38,18 @@ const MapWrapper = ({ id, appService }: {
       ],
       view: new View({
         projection: 'EPSG:3857',
-        center: [-13614350.227919813, 6040458.372108159],
-        zoom: 12,
+        center: [0, 0],
+        zoom: 6,
       }),
     }).on('pointerdrag', (e: any) => {
       const latLong = olProj.toLonLat(e.map.getView().getCenter())
+      // console.log('AA', latLong)
       addCenter([latLong[1], latLong[0]])
     })
     appService.addCenterEventListener(center => {
       if (map) {
         const lLConverted = olProj.fromLonLat([center[1], center[0]])
+        console.log('BB', lLConverted)
         map.target.getView().setCenter(lLConverted)
       }
     }, id)

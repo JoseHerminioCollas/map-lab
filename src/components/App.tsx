@@ -1,12 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, {
+  useEffect,
+  useState,
+} from 'react'
 import { CommandBar, initializeIcons } from '@fluentui/react'
 import jss from 'jss'
 import preset from 'jss-preset-default'
 import style from '../style/main-style'
 import GibsMap from './GibsMap'
+import MapWrapper from './OpenLayerMap'
 import InfoModal from './InfoModal'
 import AppService, { AppServiceInstanceI } from '../app-service'
-import gibsProducts, { getOLSourceOptions } from './Gibs'
+import gibsProducts, {
+  getOLSourceOptions,
+} from './Gibs'
 import {
   infoCommandItem,
   infoWithAction,
@@ -33,16 +39,23 @@ function App() {
   useEffect(() => {
     setSourceOptions(getOLSourceOptions(gibsDate, gibsProduct.imageLayer))
   }, [gibsProduct, gibsDate])
+  console.log(sourceOptions)
 
   return (
     <>
       <section className={sheet.classes.mainContainer}>
-        <GibsMap
-          id={10}
-          sourceOptions={sourceOptions}
-          appService={applicationService}
-        />
-        <div className="control-frame">
+        <div className="map-frame">
+          <GibsMap
+            id={10}
+            sourceOptions={sourceOptions}
+            appService={applicationService}
+          />
+          <MapWrapper
+            id={90}
+            appService={applicationService}
+          />
+        </div>
+        <div className="control-frame" style={{ display: 'none' }}>
           <h3>ViewGibs</h3>
           <GibsProductInfo
             product={gibsProduct}

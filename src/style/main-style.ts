@@ -30,7 +30,7 @@ const style: any = {
       height: '100%',
     },
     '& .openlayer': {
-      position: 'absolute',
+      position: 'relative',
       width: '100%',
       height: '90%',
 

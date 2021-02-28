@@ -50,7 +50,7 @@ interface AddZoom {
 }
 const appServiceId = 0
 const initZoom = 10
-const initCenter = [47.6, -122.3]
+const initCenter = [26.96350124534564, -111.59884370576512]
 const isValid = (id: number, idB: number) => id !== idB
 const AppService: AppServiceI = () => {
   const messages$: Subject<Message> = new Subject()
