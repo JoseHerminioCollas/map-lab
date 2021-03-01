@@ -39,7 +39,6 @@ function App() {
   useEffect(() => {
     setSourceOptions(getOLSourceOptions(gibsDate, gibsProduct.imageLayer))
   }, [gibsProduct, gibsDate])
-  console.log(sourceOptions)
 
   return (
     <>
