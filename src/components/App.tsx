@@ -55,7 +55,7 @@ function App() {
             appService={applicationService}
           />
         </div>
-        <div className="control-frame" style={{ display: 'none' }}>
+        <div className="control-frame">
           <h3>ViewGibs</h3>
           <GibsProductInfo
             product={gibsProduct}
