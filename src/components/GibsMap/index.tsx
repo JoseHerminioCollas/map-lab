@@ -57,7 +57,7 @@ const GibsMap: GibsNasa.GibsMap = ({
   }, [sourceOptions])
 
   return (
-    <div ref={mapElement} className="gibs-map" />
+    <div ref={mapElement} className="gibs-map" tabIndex={-1} />
   )
 }
 

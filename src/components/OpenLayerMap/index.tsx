@@ -54,7 +54,7 @@ const MapWrapper = ({ id, appService }: {
   }, [])
 
   return (
-    <div ref={mapElement} className="openlayer" />
+    <div ref={mapElement} className="openlayer" tabIndex={-1} />
   )
 }
 
