@@ -31,9 +31,13 @@ const style: any = {
     },
     '& .openlayer': {
       position: 'relative',
-      width: '100%',
+      width: '20%',
       height: '90%',
-
+    },
+    '& .gibs-map': {
+      position: 'relative',
+      width: '80%',
+      height: '90%',
     },
     '& .gibs-select': {
       overflow: 'auto',
